@@ -1,6 +1,7 @@
 package restful.user;
 
 
+import data.DataProviderManagement;
 import entity.response.user.UserCreationResponse;
 import io.restassured.response.Response;
 import org.json.JSONObject;
@@ -9,11 +10,11 @@ import org.testng.annotations.Test;
 import utils.restful_helper.ApiHelper;
 
 public class UserTest {
-    @Test(priority = 1)
-    public void createUsers() {
+    @Test(priority = 1,dataProvider = "checkoutData", dataProviderClass = DataProviderManagement.class)
+    public void createUsers(String name, String job) {
         JSONObject body = new JSONObject();
-        body.put("name", "mohamed");
-        body.put("job", "QC");
+        body.put("name", name);
+        body.put("job", job);
         Response response = ApiHelper.post("https://reqres.in/api/users", body);
 
         // Deserialize JSON to java object if needed in more future assertion
@@ -32,8 +33,8 @@ public class UserTest {
         Assert.assertNotNull(response.body().jsonPath().get("id"));
 
         // validate that name and job from response body equals data sent
-        Assert.assertEquals(response.body().jsonPath().get("name"), "mohamed");
-        Assert.assertEquals(response.body().jsonPath().get("job"), "QC");
+        Assert.assertEquals(response.body().jsonPath().get("name"), name);
+        Assert.assertEquals(response.body().jsonPath().get("job"), job);
 
 
     }
