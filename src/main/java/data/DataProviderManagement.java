@@ -3,7 +3,7 @@ package data;
 import org.testng.annotations.DataProvider;
 
 public class DataProviderManagement {
-    @DataProvider(name = "checkoutData")
+    @DataProvider(name = "userData")
     public static Object[][] getCheckoutData() {
         return new Object[][]{
                 {"Mohamed", "QC"},

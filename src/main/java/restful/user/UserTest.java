@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import utils.restful_helper.ApiHelper;
 
 public class UserTest {
-    @Test(priority = 1,dataProvider = "checkoutData", dataProviderClass = DataProviderManagement.class)
+    @Test(priority = 1,dataProvider = "userData", dataProviderClass = DataProviderManagement.class)
     public void createUsers(String name, String job) {
         JSONObject body = new JSONObject();
         body.put("name", name);
