@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="MySuite">
+    <listeners>
+        <listener class-name="utils.reporting.ExtentReporterNG" />
+    </listeners>
+    <test name="MyTests">
+        <classes>
+            <class name="restful.user.UserTest"/>
+        </classes>
+    </test>
+</suite>
